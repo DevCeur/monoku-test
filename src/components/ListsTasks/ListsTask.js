@@ -8,7 +8,7 @@ export const ListsTasks = () => {
       <TasksContext.Consumer>
         {({ status }) =>
           status.data.map(task => (
-            <Task key={task.id} text={task.text} completed={task.checked} />
+            <Task id={task.id} key={task.id} text={task.text} completed={task.checked} />
           ))
         }
       </TasksContext.Consumer>
