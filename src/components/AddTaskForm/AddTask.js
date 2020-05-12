@@ -38,7 +38,12 @@ export const AddTask = () => {
         onChange={e => setText({ text: e.target.value })}
       />
       {showButton ? (
-        <Input type='submit' submit='true' value='Add task' onSubmit={createTask} />
+        <Input
+          type='submit'
+          submit='true'
+          value='Add task'
+          onSubmit={createTask}
+        />
       ) : null}
     </Form>
   )
