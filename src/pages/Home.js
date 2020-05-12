@@ -2,6 +2,7 @@ import React from 'react'
 
 import { Header } from '../components/Header/Header'
 import { Layout } from '../components/LayoutComponent/Layout'
+import { TasksDash } from '../components/TasksDash/TasksDash'
 
 export const Home = () => {
   return (
@@ -14,6 +15,9 @@ export const Home = () => {
           <h3>Que planeas hacer hoy?</h3>
         </div>
       </Header>
+      <TasksDash>
+        <h2>Añade las tareas que deseas realizar</h2>
+      </TasksDash>
     </Layout>
   )
 }

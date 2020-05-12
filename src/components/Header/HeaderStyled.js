@@ -52,7 +52,9 @@ export const HeaderStyled = styled.header`
       margin-bottom: 85px;
 
       @media only screen and (min-width: 1024px) {
-        margin-bottom: 100px;
+        margin-bottom: 55px;
+        font-size: 4.5em;
+        margin-top: 15px;
       }
     }
 
