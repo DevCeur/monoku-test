@@ -29,7 +29,24 @@ export const TasksContextProvider = ({ children }) => {
     )
   }, [])
 
+  const updateTask = id => {
+    setStatus({
+      data: status.data.map(task => {
+        if (task.id === id) {
+          return {
+            ...task,
+            checked: true
+          }
+        } else {
+          return task
+        }
+      })
+    })
+  }
+
   return (
-    <TasksContext.Provider value={{ status }}>{children}</TasksContext.Provider>
+    <TasksContext.Provider value={{ status, updateTask }}>
+      {children}
+    </TasksContext.Provider>
   )
 }
