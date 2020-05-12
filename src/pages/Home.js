@@ -3,6 +3,8 @@ import React from 'react'
 import { Header } from '../components/Header/Header'
 import { Layout } from '../components/LayoutComponent/Layout'
 import { TasksDash } from '../components/TasksDash/TasksDash'
+import { ListsTasks } from '../components/ListsTasks/ListsTask'
+import { AddTask } from '../components/AddTaskForm/AddTask'
 
 export const Home = () => {
   return (
@@ -17,6 +19,8 @@ export const Home = () => {
       </Header>
       <TasksDash>
         <h2>Añade las tareas que deseas realizar</h2>
+        <AddTask />
+        <ListsTasks />
       </TasksDash>
     </Layout>
   )
