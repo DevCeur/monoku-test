@@ -15,7 +15,6 @@ export const Task = ({ id, text, completed }) => {
       }
     })
     const json = response.json()
-    // updateTask(id, { checked: true })
     return json
   }
 
@@ -28,10 +27,11 @@ export const Task = ({ id, text, completed }) => {
           }
 
           return (
-            <div>
-              <input type='checkbox' />
+            <div style={{ cursor: 'pointer' }}>
               {completed ? (
-                <p>Completed: {text}</p>
+                <p style={{ textDecoration: 'line-through', color: '#757575' }}>
+                  {text}
+                </p>
               ) : (
                 <p onClick={() => checkTask(id)}>{text}</p>
               )}
