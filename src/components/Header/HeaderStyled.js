@@ -62,7 +62,7 @@ export const HeaderStyled = styled.header`
       display: block;
       font-weight: 300;
       line-height: 24px;
-      width: 65%;
+      width: 85%;
 
       @media only screen and (min-width: 1024px) {
         font-size: 2em;

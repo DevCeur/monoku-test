@@ -3,6 +3,7 @@ import React, { useState, useEffect, createContext } from 'react'
 export const TasksContext = createContext([])
 
 export const TasksContextProvider = ({ children }) => {
+  const [singleTask, setSingleTask] = useState({})
   const [status, setStatus] = useState({
     loading: false,
     error: false,
@@ -78,9 +79,27 @@ export const TasksContextProvider = ({ children }) => {
     )
   }
 
+  const getSingleTask = id => {
+    status.data.map(task => {
+      if (task.id === id) {
+        setSingleTask({ ...task })
+      } else {
+        return null
+      }
+    })
+  }
+
   return (
     <TasksContext.Provider
-      value={{ status, updateTask, createTask, deleteTask, unUpdateTask }}
+      value={{
+        status,
+        updateTask,
+        createTask,
+        deleteTask,
+        unUpdateTask,
+        singleTask,
+        getSingleTask
+      }}
     >
       {children}
     </TasksContext.Provider>

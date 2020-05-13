@@ -5,6 +5,7 @@ import { TaskStyled } from './TaskStyles'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash, faCheck } from '@fortawesome/free-solid-svg-icons'
 import { Icon, TextContainer } from './styles'
+import { NavLink } from 'react-router-dom'
 
 export const Task = ({ id, text, completed }) => {
   const API_UPDATE_TASK = `https://monoku-tasks.herokuapp.com/jtxfoXn2me1c7Tj7B8wn/${id}/update`
@@ -33,7 +34,7 @@ export const Task = ({ id, text, completed }) => {
   return (
     <TaskStyled>
       <TasksContext.Consumer>
-        {({ updateTask, deleteTask, unUpdateTask }) => {
+        {({ updateTask, deleteTask, unUpdateTask, getSingleTask }) => {
           const checkTask = id => {
             updateTaskApi({ checked: true }).then(() => updateTask(id))
           }
@@ -65,14 +66,29 @@ export const Task = ({ id, text, completed }) => {
                   {text}
                 </TextContainer>
               )}
-              <Icon
-                onClick={() => deleteTaskSelected(id)}
-                style={{
-                  cursor: 'pointer'
-                }}
-              >
-                <FontAwesomeIcon icon={faTrash} />
-              </Icon>
+              <div>
+                <NavLink
+                  onClick={() => getSingleTask(id)}
+                  to={`/${id}`}
+                  style={{
+                    marginRight: 15,
+                    fontWeight: 'bold',
+                    fontSize: 18,
+                    textDecoration: 'none',
+                    color: 'grey'
+                  }}
+                >
+                  +
+                </NavLink>
+                <Icon
+                  onClick={() => deleteTaskSelected(id)}
+                  style={{
+                    cursor: 'pointer'
+                  }}
+                >
+                  <FontAwesomeIcon icon={faTrash} />
+                </Icon>
+              </div>
             </div>
           )
         }}

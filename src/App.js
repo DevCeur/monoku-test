@@ -7,6 +7,7 @@ import { Home } from './pages/Home'
 import { AnimatePresence } from 'framer-motion'
 import { GlobalStyles } from './styles/GlobalStyles'
 import { TasksContextProvider } from './context/TasksContext'
+import { TaskDetails } from './pages/TaskDetails'
 
 export const App = () => {
   return (
@@ -18,6 +19,7 @@ export const App = () => {
             <AnimatePresence exitBeforeEnter>
               <Switch>
                 <Route exact path='/' component={Home} />
+                <Route exact path='/:id' component={TaskDetails} />
               </Switch>
             </AnimatePresence>
           )}

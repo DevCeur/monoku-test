@@ -14,7 +14,7 @@ export const Home = () => {
           <p>Martes, 12 de Mayo</p>
           <h2>12:45 am</h2>
 
-          <h3>Que planeas hacer hoy?</h3>
+          <h3>¿Qué planeas hacer el día de hoy?</h3>
         </div>
       </Header>
       <TasksDash>
