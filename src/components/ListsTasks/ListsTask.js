@@ -13,7 +13,7 @@ export const ListsTasks = () => {
               <Loading />
             ) : status.data.length === 0 ? (
               <p style={{ color: '#757575', textAlign: 'center' }}>
-                No has anhadido ninguna tarea hasta ahora.
+                No has añadido ninguna tarea hasta ahora.
               </p>
             ) : (
               status.data.map(task => (

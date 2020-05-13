@@ -60,7 +60,7 @@ export const HeaderStyled = styled.header`
 
     h3 {
       display: block;
-      font-weight: 300;
+      font-weight: 200;
       line-height: 24px;
       width: 85%;
 
