@@ -23,7 +23,7 @@ export const AddTask = () => {
       'https://monoku-tasks.herokuapp.com/jtxfoXn2me1c7Tj7B8wn/add'
 
     if (text.text === '') {
-      setError('El campo no debe estar vacio')
+      setError('Por favor, rellena el campo')
     } else {
       const response = await fetch(API_ADD_TASK, {
         method: 'POST',
@@ -42,19 +42,22 @@ export const AddTask = () => {
       {({ createTask }) => {
         const createNewTask = e => {
           e.preventDefault()
+          setText({ text: 'agregando...' })
+          setShowButton(false)
           createTaskApi().then(response => {
             createTask({ ...response })
+            setText({ text: '' })
           })
         }
 
         return (
           <Form onSubmit={createNewTask}>
-            <p>{error}</p>
+            <p style={{ color: 'red', marginTop: 15 }}>{error}</p>
             <Input
+              style={{ marginTop: 10}}
               type='text'
               placeholder='Ej: Comporar tomates'
               value={text.text}
-              onFocus={() => setShowButton(true)}
               onChange={handleShowButton}
             />
             {showButton ? (

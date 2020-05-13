@@ -45,6 +45,12 @@ export const TasksContextProvider = ({ children }) => {
     })
   }
 
+  const deleteTask = id => {
+    setStatus({
+      data: status.data.filter(task => task.id !== id)
+    })
+  }
+
   const createTask = task => {
     setStatus({
       loading: true,
@@ -58,7 +64,9 @@ export const TasksContextProvider = ({ children }) => {
   }
 
   return (
-    <TasksContext.Provider value={{ status, updateTask, createTask }}>
+    <TasksContext.Provider
+      value={{ status, updateTask, createTask, deleteTask }}
+    >
       {children}
     </TasksContext.Provider>
   )
