@@ -83,10 +83,19 @@ export const TasksContextProvider = ({ children }) => {
     status.data.map(task => {
       if (task.id === id) {
         setSingleTask({ ...task })
-      } else {
-        return null
       }
+      return null
     })
+  }
+
+  const setFilter = (filter = 'all') => {
+    if (filter === 'all') {
+      setStatus({ data: status.data })
+    } else if (filter === 'complete') {
+      status.data = setStatus({
+        data: status.data.filter(task => task.checked)
+      })
+    }
   }
 
   return (
@@ -98,7 +107,8 @@ export const TasksContextProvider = ({ children }) => {
         deleteTask,
         unUpdateTask,
         singleTask,
-        getSingleTask
+        getSingleTask,
+        setFilter
       }}
     >
       {children}

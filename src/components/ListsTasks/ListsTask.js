@@ -7,7 +7,7 @@ export const ListsTasks = () => {
   return (
     <div>
       <TasksContext.Consumer>
-        {({ status }) => (
+        {({ status, tasks }) => (
           <div>
             {status.loading ? (
               <Loading />
