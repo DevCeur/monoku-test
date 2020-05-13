@@ -2,6 +2,9 @@ import React from 'react'
 
 import { TasksContext } from '../../context/TasksContext'
 import { TaskStyled } from './TaskStyles'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrash, faCheck } from '@fortawesome/free-solid-svg-icons'
+import { Icon, TextContainer } from './styles'
 
 export const Task = ({ id, text, completed }) => {
   const API_UPDATE_TASK = `https://monoku-tasks.herokuapp.com/jtxfoXn2me1c7Tj7B8wn/${id}/update`
@@ -30,9 +33,13 @@ export const Task = ({ id, text, completed }) => {
   return (
     <TaskStyled>
       <TasksContext.Consumer>
-        {({ updateTask, deleteTask }) => {
+        {({ updateTask, deleteTask, unUpdateTask }) => {
           const checkTask = id => {
             updateTaskApi({ checked: true }).then(() => updateTask(id))
+          }
+
+          const unCheckTask = id => {
+            updateTaskApi({ checked: false }).then(() => unUpdateTask(id))
           }
 
           const deleteTaskSelected = id => {
@@ -49,33 +56,23 @@ export const Task = ({ id, text, completed }) => {
               }}
             >
               {completed ? (
-                <p
-                  style={{
-                    cursor: 'pointer',
-                    textDecoration: 'line-through',
-                    color: '#757575'
-                  }}
-                >
+                <TextContainer complete onClick={() => unCheckTask(id)}>
+                  <FontAwesomeIcon icon={faCheck} style={{ marginRight: 15 }} />
                   {text}
-                </p>
+                </TextContainer>
               ) : (
-                <p
-                  style={{
-                    cursor: 'pointer'
-                  }}
-                  onClick={() => checkTask(id)}
-                >
+                <TextContainer onClick={() => checkTask(id)}>
                   {text}
-                </p>
+                </TextContainer>
               )}
-              <p
+              <Icon
                 onClick={() => deleteTaskSelected(id)}
                 style={{
                   cursor: 'pointer'
                 }}
               >
-                delete
-              </p>
+                <FontAwesomeIcon icon={faTrash} />
+              </Icon>
             </div>
           )
         }}

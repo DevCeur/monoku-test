@@ -45,6 +45,21 @@ export const TasksContextProvider = ({ children }) => {
     })
   }
 
+  const unUpdateTask = id => {
+    setStatus({
+      data: status.data.map(task => {
+        if (task.id === id) {
+          return {
+            ...task,
+            checked: false
+          }
+        } else {
+          return task
+        }
+      })
+    })
+  }
+
   const deleteTask = id => {
     setStatus({
       data: status.data.filter(task => task.id !== id)
@@ -65,7 +80,7 @@ export const TasksContextProvider = ({ children }) => {
 
   return (
     <TasksContext.Provider
-      value={{ status, updateTask, createTask, deleteTask }}
+      value={{ status, updateTask, createTask, deleteTask, unUpdateTask }}
     >
       {children}
     </TasksContext.Provider>
