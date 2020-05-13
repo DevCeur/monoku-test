@@ -19,7 +19,7 @@ This project was deployed to Netlify, if you want to do it too, follow this step
 
 - Create an account in Netlify
 - Install the netlify CLI
-- Login from the CLI yo your Netlify account
+- Login from the CLI to your Netlify account
 - Initialize a project with the following command:
 
 ```
