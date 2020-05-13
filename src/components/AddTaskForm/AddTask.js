@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 
 import { TasksContext } from '../../context/TasksContext'
 import { Form, Input } from './AddTaskForm'
+import { AnimatePresence } from 'framer-motion'
 
 export const AddTask = () => {
   const [text, setText] = useState({ text: '' })
@@ -54,20 +55,26 @@ export const AddTask = () => {
           <Form onSubmit={createNewTask}>
             <p style={{ color: 'red', marginTop: 15 }}>{error}</p>
             <Input
-              style={{ marginTop: 10}}
+              style={{ marginTop: 10 }}
               type='text'
               placeholder='Ej: Comporar tomates'
               value={text.text}
               onChange={handleShowButton}
             />
-            {showButton ? (
-              <Input
-                type='submit'
-                submit='true'
-                value='Add task'
-                onSubmit={createNewTask}
-              />
-            ) : null}
+            <AnimatePresence exitBeforeEnter>
+              {showButton ? (
+                <Input
+                  type='submit'
+                  submit='true'
+                  value='Add task'
+                  onSubmit={createNewTask}
+                  initial={{ translateX: -5, opacity: 0 }}
+                  animate={{ translateX: 0, opacity: 1 }}
+                  exit={{ translateX: 5, opacity: 0 }}
+                  transition={{ duration: 0.1 }}
+                />
+              ) : null}
+            </AnimatePresence>
           </Form>
         )
       }}

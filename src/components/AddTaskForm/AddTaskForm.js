@@ -1,11 +1,12 @@
 import styled, { css } from 'styled-components'
+import { motion } from 'framer-motion'
 
 export const Form = styled.form`
   position: relative;
   margin-bottom: 50px;
 `
 
-export const Input = styled.input`
+export const Input = styled(motion.input)`
   width: 100%;
   display: block;
   padding: 20px;
