@@ -57,7 +57,7 @@ export const AddTask = () => {
             <Input
               style={{ marginTop: 10 }}
               type='text'
-              placeholder='Ej: Comporar tomates'
+              placeholder='Ej: Comprar tomates'
               value={text.text}
               onChange={handleShowButton}
             />

@@ -4,7 +4,7 @@ import { TasksContext } from '../../context/TasksContext'
 import { TaskStyled } from './TaskStyles'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash, faCheck } from '@fortawesome/free-solid-svg-icons'
-import { Icon, TextContainer } from './styles'
+import { Icon, TextContainer, IconCheck } from './styles'
 import { NavLink } from 'react-router-dom'
 
 export const Task = ({ id, text, completed }) => {
@@ -58,11 +58,16 @@ export const Task = ({ id, text, completed }) => {
             >
               {completed ? (
                 <TextContainer complete onClick={() => unCheckTask(id)}>
-                  <FontAwesomeIcon icon={faCheck} style={{ marginRight: 15 }} />
+                  <IconCheck>
+                    <FontAwesomeIcon icon={faCheck} />
+                  </IconCheck>
                   {text}
                 </TextContainer>
               ) : (
                 <TextContainer onClick={() => checkTask(id)}>
+                  <IconCheck nochecked='true'>
+                    <FontAwesomeIcon icon={faCheck} />
+                  </IconCheck>
                   {text}
                 </TextContainer>
               )}
